@@ -3,14 +3,10 @@
 
 return [
 
-    /*
-     * The prefix for routes
-     */
+    // The prefix for routes
     'prefix' => 'graphql',
 
-    /*
-     * The domain for routes
-     */
+    // The domain for routes
     'domain' => null,
 
     /*
@@ -55,9 +51,7 @@ return [
      */
     'variables_input_name' => 'variables',
 
-    /*
-     * Any middleware for the 'graphql' route group
-     */
+    // Any middleware for the 'graphql' route group
     'middleware' => [],
 
     /**
@@ -67,9 +61,7 @@ return [
         'default' => [],
     ],
 
-    /*
-     * Any headers that will be added to the response returned by the default controller
-     */
+    // Any headers that will be added to the response returned by the default controller
     'headers' => [],
 
     /*
@@ -124,10 +116,16 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-
+                'allBits' => \App\GraphQL\Query\AllBitsQuery::class,
+                'bitById' => \App\GraphQL\Query\BitByIdQuery::class,
             ],
             'mutation' => [
-
+                'likeBit' => \App\GraphQL\Mutation\LikeBitMutation::class,
+                'logIn' => \App\GraphQL\Mutation\LogInMutation::class,
+                'newBit' => \App\GraphQL\Mutation\NewBitMutation::class,
+                'replyBit' => \App\GraphQL\Mutation\ReplyBitMutation::class,
+                'signUp' => \App\GraphQL\Mutation\SignUpMutation::class,
+                'unlikeBit' => \App\GraphQL\Mutation\UnlikeBitMutation::class,
             ]
         ]
     ],
@@ -181,7 +179,9 @@ return [
      * ]
      */
     'types' => [
-
+        'User' => \App\GraphQL\Type\UserType::class,
+        'Bit' => \App\GraphQL\Type\BitType::class,
+        'Reply' => \App\GraphQL\Type\ReplyType::class,
     ],
 
     /*
